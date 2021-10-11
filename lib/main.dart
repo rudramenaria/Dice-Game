@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:dice_game/UI/Dashboard/dashboard.screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const GameScreen(),
+      home: const SplashScreen(),
     );
   }
 }
@@ -40,23 +41,23 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   checkLogin() async {
-    final User? user = auth.currentUser;
+    user = auth.currentUser;
     if (user == null) {
       WidgetsBinding.instance!.addPostFrameCallback((_) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => LoginOrSignUpScreen(),
+            builder: (context) => const LoginOrSignUpScreen(),
           ),
         );
       });
     } else {
-      log(user.uid.toString());
+      log(user!.email.toString(), name: 'name');
       WidgetsBinding.instance!.addPostFrameCallback((_) {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DashboardScreen(),
+            builder: (context) => const DashboardScreen(),
           ),
         );
       });
@@ -66,6 +67,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     checkLogin();
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SizedBox(height: 100, child: Image.asset("assets/dice.jpg")),
+      ),
+    );
   }
 }

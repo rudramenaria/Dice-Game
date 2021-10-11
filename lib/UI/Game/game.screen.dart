@@ -3,6 +3,7 @@ import 'dart:developer' as d;
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dice_game/main.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,8 +46,8 @@ class _GameScreenState extends State<GameScreen> {
     data = jsonDecode(s.getString('data') ?? '{}');
     d.log(data.toString());
     setState(() {
-      remainingChances = data!['remainingChances'];
-      totalScore = data!['totalScore'];
+      remainingChances = data!['remainingChances'] ?? 10;
+      totalScore = data!['totalScore'] ?? 0;
       loading = false;
     });
   }
@@ -60,9 +61,11 @@ class _GameScreenState extends State<GameScreen> {
         remainingChances--;
       });
       setPreference();
-      await _leaderboard.add({"name": "Radhe Shyam", "points": totalScore});
+      await _leaderboard
+          .add({"name": user!.email ?? "Name", "points": totalScore});
       d.log('done');
     } else {
+      setPreference();
       setState(() {
         _diceValue = Random().nextInt(6) + 1;
         totalScore += _diceValue;
@@ -99,6 +102,7 @@ class _GameScreenState extends State<GameScreen> {
           )
         : Scaffold(
             backgroundColor: Colors.white,
+            appBar: AppBar(),
             body: LoadingOverlay(
               isLoading: loading,
               child: Column(
@@ -134,7 +138,7 @@ class _GameScreenState extends State<GameScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Total Chance Remaining" + remainingChances.toString(),
+                    "Total Chance Remaining " + remainingChances.toString(),
                     style: const TextStyle(
                       color: Colors.red,
                       fontSize: 25,
@@ -145,7 +149,7 @@ class _GameScreenState extends State<GameScreen> {
                     height: 20,
                   ),
                   Text(
-                    "Your Toatl Score " + totalScore.toString(),
+                    "Your Total Score " + totalScore.toString(),
                     style: const TextStyle(
                       color: Colors.red,
                       fontSize: 25,

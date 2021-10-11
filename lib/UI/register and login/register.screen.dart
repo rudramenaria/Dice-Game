@@ -21,6 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     user = (await auth.createUserWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
+      
     ))
         .user;
     if (user != null) {
@@ -60,48 +61,55 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            TextFormField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
-              validator: (String? value) {
-                if (value!.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
-              validator: (String? value) {
-                if (value!.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              alignment: Alignment.center,
-              child: RaisedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    _register();
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                controller: _emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (String? value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter some text';
                   }
+                  return null;
                 },
-                child: const Text('Submit'),
               ),
             ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                _success == null
-                    ? ''
-                    : (_success!
-                        ? 'Successfully registered ' + _userEmail!
-                        : 'Registration failed'),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: TextFormField(
+                controller: _passwordController,
+                decoration: const InputDecoration(labelText: 'Password'),
+                validator: (String? value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
               ),
-            )
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: RawMaterialButton(
+                  constraints:
+                      const BoxConstraints(minHeight: 50, minWidth: 200),
+                  fillColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _register();
+                    }
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Register',
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                  )),
+            ),
           ],
         ),
       ),

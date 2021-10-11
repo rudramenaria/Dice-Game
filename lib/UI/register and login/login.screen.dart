@@ -52,6 +52,9 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
       body: Column(
         children: [
           Form(
@@ -59,55 +62,55 @@ class LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  child: const Text('Test sign in with email and password'),
-                  padding: const EdgeInsets.all(16),
-                  alignment: Alignment.center,
-                ),
-                TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
-                  validator: (String? value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
-                  validator: (String? value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  alignment: Alignment.center,
-                  child: RaisedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        _signInWithEmailAndPassword();
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(labelText: 'Email'),
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter some text';
                       }
+                      return null;
                     },
-                    child: const Text('Submit'),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    _success == null
-                        ? ''
-                        : (_success!
-                            ? 'Successfully signed in ' + _userEmail!
-                            : 'Sign in failed'),
-                    style: TextStyle(color: Colors.red),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(labelText: 'Password'),
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: RawMaterialButton(
+                      constraints:
+                          const BoxConstraints(minHeight: 50, minWidth: 200),
+                      fillColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _signInWithEmailAndPassword();
+                        }
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(color: Colors.white, fontSize: 25),
+                        ),
+                      )),
+                ),
               ],
             ),
           ),

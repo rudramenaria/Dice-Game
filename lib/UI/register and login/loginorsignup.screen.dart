@@ -15,27 +15,55 @@ class _LoginOrSignUpScreenState extends State<LoginOrSignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FlatButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
+          Center(
+            child: RawMaterialButton(
+                constraints: const BoxConstraints(minHeight: 50, minWidth: 200),
+                fillColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
-                );
-              },
-              child: Text('login')),
-          FlatButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RegisterScreen(),
+                )),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Center(
+            child: RawMaterialButton(
+                constraints: const BoxConstraints(minHeight: 50, minWidth: 200),
+                fillColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterScreen(),
+                    ),
+                  );
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
-                );
-              },
-              child: Text('Register')),
+                )),
+          ),
         ],
       ),
     );
