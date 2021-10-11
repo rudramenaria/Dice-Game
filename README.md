@@ -2,15 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+This is a simple Dice game build with Flutter and Firebase.
+In this i have used flutter authentication [https://pub.dev/packages/firebase_auth] for registration and login.
+It has mainly two screens one is Dashboard/Leardboard and another where you can play the game by simply clicking a button.
+Used Stream in the Leardboard page to make it realtime by using cloud firestore [https://pub.dev/packages/cloud_firestore].
 
-This project is a starting point for a Flutter application.
+Demo Video link : https://drive.google.com/file/d/1-8Gfp_UYWksYZO5aj-I35Hxbe04pc5nz/view?usp=sharing
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+More info about flutter : [https://flutter.dev/]
