@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "142396439148",
+    "project_id": "dice-game-a1876",
+    "storage_bucket": "dice-game-a1876.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142396439148:android:a1344762a48dc329c4f649",
+        "android_client_info": {
+          "package_name": "com.flutter.dice_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142396439148-0tc9h0ss30spbfs5u8thakpn48t072fv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutter.dice_game",
+            "certificate_hash": "361af6745d9a3cc3c2ce907541896830ee9a8b9b"
+          }
+        },
+        {
+          "client_id": "142396439148-korfu5pn079mtk3clmkogfbbpokf9r3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQaGuIkNIlxokPlP4QAyROwy7XRcAZhOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142396439148-korfu5pn079mtk3clmkogfbbpokf9r3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
